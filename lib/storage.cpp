@@ -25,7 +25,7 @@ impl::handle_storage::~handle_storage()
   }
 
   m_set.clear();
-};
+}
 //---------------------------------------------------------------------------
 
 
@@ -42,7 +42,7 @@ async::handle_t impl::handle_storage::register_new_handle(size_t a_un_stat_bulk)
   }
 
   return async::handle_t(p_context);
-};
+}
 //---------------------------------------------------------------------------
 
 
@@ -60,8 +60,9 @@ impl::t_context* impl::handle_storage::get_context(async::handle_t a_handle)
     return *iter;
   }
 
-};
+}
 //---------------------------------------------------------------------------
+
 
 // удаляем данный контекст. Если не 0, то была какая-то ошибка (не было такого контекста уже например)
 int impl::handle_storage::destroy_context(async::handle_t a_handle)
@@ -80,7 +81,7 @@ int impl::handle_storage::destroy_context(async::handle_t a_handle)
     return 0;
   }
 
-};
+}
 //---------------------------------------------------------------------------
 
 
@@ -119,12 +120,12 @@ void impl::handle_storage::log_err(__attribute__((unused)) const std::string_vie
 void impl::handle_storage::push_to_console_conv(const std::string& astr_info)
 {
   m_console_conv.push(astr_info);
-};
+}
 //---------------------------------------------------------------------------
 
 
 void impl::handle_storage::push_to_file_conv(const std::string& astr_info)
 {
   m_file_conv.push(astr_info);
-};
+}
 //---------------------------------------------------------------------------

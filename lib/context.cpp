@@ -12,7 +12,7 @@
 impl::t_context::t_context(size_t aun_bulk)
   :m_bulk_machine(aun_bulk)
 {
-};
+}
 //---------------------------------------------------------------------------
 
 
@@ -59,6 +59,6 @@ void impl::t_context::receive(const char* ap_data, std::size_t a_un_size)
 
   m_buf_not_ready_yet = str_curr; // запоминаем остаток
 
-};
+}
 //---------------------------------------------------------------------------
 
