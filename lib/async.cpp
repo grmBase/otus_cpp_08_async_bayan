@@ -5,14 +5,15 @@
 #include "context.h"
 //---------------------------------------------------------------------------
 
-// ññûëêà íà âíåøíèé îáúåêò
+// ÑÑÑ‹Ð»ÐºÐ° Ð½Ð° Ð²Ð½ÐµÑˆÐ½Ð¸Ð¹ Ð¾Ð±ÑŠÐµÐºÑ‚
 extern impl::handle_storage* gp_storage;
+
 
 
 async::handle_t async::connect(std::size_t a_un_bulk)
 {
   return gp_storage->register_new_handle(a_un_bulk);
-};
+}
 //---------------------------------------------------------------------------
 
 
@@ -20,22 +21,22 @@ async::handle_t async::connect(std::size_t a_un_bulk)
 void async::receive(async::handle_t a_handle, const char* ap_data, std::size_t a_un_size)
 {
 
-  // Òóò íåêàÿ "ôèãíÿ", ïîòîìó êàê ïîñëå ïîëó÷åíèÿ êîíòåêñòà ìû ïî ñóòè åãî íèêàê íå "çàùèùàåì"
-  // íî òóò âåðîÿòíî íàäåæäà íà àäåêâàòíîãî "ïîëüçîâàòåëÿ" èíòåðôåéñà
+  // Ð¢ÑƒÑ‚ Ð½ÐµÐºÐ°Ñ "Ñ„Ð¸Ð³Ð½Ñ", Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ ÐºÐ°Ðº Ð¿Ð¾ÑÐ»Ðµ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ ÐºÐ¾Ð½Ñ‚ÐµÐºÑÑ‚Ð° Ð¼Ñ‹ Ð¿Ð¾ ÑÑƒÑ‚Ð¸ ÐµÐ³Ð¾ Ð½Ð¸ÐºÐ°Ðº Ð½Ðµ "Ð·Ð°Ñ‰Ð¸Ñ‰Ð°ÐµÐ¼"
+  // Ð½Ð¾ Ñ‚ÑƒÑ‚ Ð²ÐµÑ€Ð¾ÑÑ‚Ð½Ð¾ Ð½Ð°Ð´ÐµÐ¶Ð´Ð° Ð½Ð° Ð°Ð´ÐµÐºÐ²Ð°Ñ‚Ð½Ð¾Ð³Ð¾ "Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ" Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹ÑÐ°
   impl::t_context* p_context = gp_storage->get_context(a_handle);
   if (!p_context) {
     return;
   }
 
   p_context->receive(ap_data, a_un_size);
-};
+}
 //---------------------------------------------------------------------------
 
 
 void async::disconnect(async::handle_t a_handle)
 {
   gp_storage->destroy_context(a_handle);
-};
+}
 //---------------------------------------------------------------------------
 
 
@@ -43,32 +44,32 @@ void async::disconnect(async::handle_t a_handle)
 void impl::log_info(const std::string_view& astr_info)
 {
   gp_storage->log_info(astr_info);
-};
+}
 //---------------------------------------------------------------------------
 
 void impl::logout(const std::string_view& astr_info)
 {
   impl::log_info(astr_info);
-};
+}
 //---------------------------------------------------------------------------
 
 
 void impl::log_err(const std::string_view& astr_info)
 {
   gp_storage->log_err(astr_info);
-};
+}
 //---------------------------------------------------------------------------
 
-// äëÿ âûâîäà â std::cout ÷åðåç íèòü êàê òðåáóåòñÿ â çàäàíèè:
+// Ð´Ð»Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð° Ð² std::cout Ñ‡ÐµÑ€ÐµÐ· Ð½Ð¸Ñ‚ÑŒ ÐºÐ°Ðº Ñ‚Ñ€ÐµÐ±ÑƒÐµÑ‚ÑÑ Ð² Ð·Ð°Ð´Ð°Ð½Ð¸Ð¸:
 void impl::push_to_console_conv(const std::string& astr_info)
 {
   gp_storage->push_to_console_conv(astr_info);
-};
+}
 //---------------------------------------------------------------------------
 
-// çàêèäûâàåì çàäàíèå íà ñîõðàíåíèå â ôàéë
+// Ð·Ð°ÐºÐ¸Ð´Ñ‹Ð²Ð°ÐµÐ¼ Ð·Ð°Ð´Ð°Ð½Ð¸Ðµ Ð½Ð° ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ Ð² Ñ„Ð°Ð¹Ð»
 void impl::push_to_file_conv(const std::string& astr_info)
 {
   gp_storage->push_to_file_conv(astr_info);
-};
+}
 //---------------------------------------------------------------------------

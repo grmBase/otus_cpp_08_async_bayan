@@ -6,9 +6,9 @@
 #include <string>
 //---------------------------------------------------------------------------
 
+
 namespace async 
 {
-
 
 // объявление хендла:
 using handle_t = void *;
@@ -19,7 +19,9 @@ handle_t connect(std::size_t bulk);
 void receive(handle_t handle, const char *data, std::size_t size);
 void disconnect(handle_t handle);
 
-}; // end of namespace async
+} // end of namespace async
+//---------------------------------------------------------------------------
+
 
 
 
@@ -39,7 +41,5 @@ void push_to_console_conv(const std::string& astr_info);
 // закидываем задание на сохранение в файл
 void push_to_file_conv(const std::string& astr_info);
 
-};
-
-
+}
 //---------------------------------------------------------------------------

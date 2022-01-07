@@ -19,7 +19,7 @@ jobs:
       - run: cmake --build .
 
       # запускаем тесты:
-      - run: cmake --build . --target test
+      # - run: cmake --build . --target test
       # собираем какой-то пакет
       - run: cmake --build . --target package
 
