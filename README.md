@@ -1,1 +1,0 @@
-# otus_cpp_08_async_bayan
