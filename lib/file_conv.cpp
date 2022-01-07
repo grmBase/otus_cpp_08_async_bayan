@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------
 #include <iostream>
 
-#include <fstream> // вывод в файл
-#include <filesystem>  // определяем наличие уже такого файла
+#include <fstream> // РІС‹РІРѕРґ РІ С„Р°Р№Р»
+#include <filesystem>  // РѕРїСЂРµРґРµР»СЏРµРј РЅР°Р»РёС‡РёРµ СѓР¶Рµ С‚Р°РєРѕРіРѕ С„Р°Р№Р»Р°
 
 #include <string>
 //---------------------------------------------------------------------------
@@ -17,7 +17,7 @@ impl::t_file_conv::t_file_conv()
   : m_threads{c_un_num_of_file_thread}
 {
 
-  // запускаем нити:
+  // Р·Р°РїСѓСЃРєР°РµРј РЅРёС‚Рё:
   for(auto& curr : m_threads) {
     curr = std::thread([this] {this->work(); });
   };
@@ -25,7 +25,7 @@ impl::t_file_conv::t_file_conv()
 //---------------------------------------------------------------------------
 
 
-// деструктор, чтобы остановить нить
+// РґРµСЃС‚СЂСѓРєС‚РѕСЂ, С‡С‚РѕР±С‹ РѕСЃС‚Р°РЅРѕРІРёС‚СЊ РЅРёС‚СЊ
 impl::t_file_conv::~t_file_conv()
 {
   impl::logout("before set_exit_flag()");
@@ -57,7 +57,7 @@ int impl::t_file_conv::push(const std::string& astr_info)
 
 
 
-// ствим флаг, что пора выходить
+// СЃС‚РІРёРј С„Р»Р°Рі, С‡С‚Рѕ РїРѕСЂР° РІС‹С…РѕРґРёС‚СЊ
 void impl::t_file_conv::set_exit_flag()
 {
   {
@@ -70,7 +70,7 @@ void impl::t_file_conv::set_exit_flag()
 //---------------------------------------------------------------------------
 
 
-// будем вызывать из нити
+// Р±СѓРґРµРј РІС‹Р·С‹РІР°С‚СЊ РёР· РЅРёС‚Рё
 void impl::t_file_conv::work()
 {
 
@@ -83,14 +83,14 @@ void impl::t_file_conv::work()
        m_cv.wait(lock);
     }
 
-    // сначала посмотрим что у нас с заданиями
+    // СЃРЅР°С‡Р°Р»Р° РїРѕСЃРјРѕС‚СЂРёРј С‡С‚Рѕ Сѓ РЅР°СЃ СЃ Р·Р°РґР°РЅРёСЏРјРё
     while(m_buf.size()) 
     {
       std::string str = m_buf.front();
       m_buf.pop_front();
       impl::logout(">> from file thread. Found new task to save in file: " + str);
  
-      // сохраняем в файл:
+      // СЃРѕС…СЂР°РЅСЏРµРј РІ С„Р°Р№Р»:
       {
 
         //std::chrono::time_point begin = std::chrono::steady_clock::now().time_since_epoch();
@@ -123,7 +123,7 @@ void impl::t_file_conv::work()
       }
     }
 
-    // потом посмотрим - может пора выходить
+    // РїРѕС‚РѕРј РїРѕСЃРјРѕС‚СЂРёРј - РјРѕР¶РµС‚ РїРѕСЂР° РІС‹С…РѕРґРёС‚СЊ
     if(m_exit_flag) {
       impl::logout("Exit flag detected. Exiting from thread...");
       return;

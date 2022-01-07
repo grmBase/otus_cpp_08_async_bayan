@@ -15,7 +15,7 @@ impl::t_console_conv::t_console_conv()
 //---------------------------------------------------------------------------
 
 
-// äåñòðóêòîð, ÷òîáû îñòàíîâèòü íèòü
+// Ð´ÐµÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¾ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð½Ð¸Ñ‚ÑŒ
 impl::t_console_conv::~t_console_conv()
 {
   impl::logout("before set_exit_flag()");
@@ -44,7 +44,7 @@ int impl::t_console_conv::push(const std::string& astr_info)
 
 
 
-// ñòâèì ôëàã, ÷òî ïîðà âûõîäèòü
+// ÑÑ‚Ð²Ð¸Ð¼ Ñ„Ð»Ð°Ð³, Ñ‡Ñ‚Ð¾ Ð¿Ð¾Ñ€Ð° Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒ
 void impl::t_console_conv::set_exit_flag()
 {
   {
@@ -57,7 +57,7 @@ void impl::t_console_conv::set_exit_flag()
 //---------------------------------------------------------------------------
 
 
-// áóäåì âûçûâàòü èç íèòè
+// Ð±ÑƒÐ´ÐµÐ¼ Ð²Ñ‹Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ Ð¸Ð· Ð½Ð¸Ñ‚Ð¸
 void impl::t_console_conv::work()
 {
 
@@ -70,7 +70,7 @@ void impl::t_console_conv::work()
        m_cv.wait(lock);
     }
 
-    // ñíà÷àëà ïîñìîòðèì ÷òî ó íàñ ñ çàäàíèÿìè
+    // ÑÐ½Ð°Ñ‡Ð°Ð»Ð° Ð¿Ð¾ÑÐ¼Ð¾Ñ‚Ñ€Ð¸Ð¼ Ñ‡Ñ‚Ð¾ Ñƒ Ð½Ð°Ñ Ñ Ð·Ð°Ð´Ð°Ð½Ð¸ÑÐ¼Ð¸
     while(m_buf.size()) {
 
       impl::logout(">> from console thread. Found new task to print");
@@ -80,7 +80,7 @@ void impl::t_console_conv::work()
       std::cout << str << std::endl;
     }
 
-    // ïîòîì ïîñìîòðèì - ìîæåò ïîðà âûõîäèòü
+    // Ð¿Ð¾Ñ‚Ð¾Ð¼ Ð¿Ð¾ÑÐ¼Ð¾Ñ‚Ñ€Ð¸Ð¼ - Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ð¾Ñ€Ð° Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒ
     if (m_exit_flag) {
       impl::logout("Exit flag detected. Exiting from thread...");
       return;
