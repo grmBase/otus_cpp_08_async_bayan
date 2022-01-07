@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      # - google-tests
       - feature/github_actions
 
 jobs:
